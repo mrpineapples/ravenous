@@ -79,6 +79,7 @@ class SearchBar extends React.Component {
         </div>
         <div className="SearchBar-fields">
           <input
+                onKeyPress={this.handleKeyPress}
                 onChange={this.handleTermChange}
                 placeholder="Search Businesses" />
           <input
