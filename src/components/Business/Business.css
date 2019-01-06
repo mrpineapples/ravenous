@@ -50,3 +50,13 @@
   font-size: .88rem;
   line-height: 1rem;
 }
+
+.name-tag {
+  color: inherit;
+}
+
+.name-tag:hover {
+     color: #0026FF; 
+     text-decoration: underline; 
+     cursor: pointer;  
+}

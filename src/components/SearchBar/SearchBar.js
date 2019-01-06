@@ -63,6 +63,12 @@ class SearchBar extends React.Component {
     event.preventDefault();
   };
 
+  handleKeyPress(event) {
+    if(event.key === 'Enter') {
+      document.getElementById("enter").click();
+    }
+  };
+
   render() {
     return (
       <div className="SearchBar">
@@ -76,11 +82,12 @@ class SearchBar extends React.Component {
                 onChange={this.handleTermChange}
                 placeholder="Search Businesses" />
           <input
+                onKeyPress={this.handleKeyPress}
                 onChange={this.handleLocationChange}
                 placeholder="Where?" />
         </div>
         <div className="SearchBar-submit">
-          <a onClick={this.handleSearch}>{this.props.buttonState}</a>
+          <a id="enter" onClick={this.handleSearch}>{this.props.buttonState}</a>
         </div>
     </div>
     );
