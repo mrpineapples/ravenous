@@ -26,6 +26,9 @@ const Yelp = {
             url: business.url
           }
         });
+      } else {
+        alert("Enter Business and Location");
+        window.location.reload(); 
       }
     });
   }
