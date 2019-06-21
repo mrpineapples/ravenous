@@ -1,36 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import BusinessList from "./components/BusinessList/BusinessList"
 import SearchBar from "./components/SearchBar/SearchBar"
 import Yelp from "./util/Yelp"
 
+const App = props => {
+  const [businesses, setBusinesses] = useState([]);
+  const [buttonText, setButtonText] = useState("Let's go");
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      businesses: [],
-      buttonText: "Let's go",
-    };
-    this.searchYelp = this.searchYelp.bind(this);
-  }
-
-  searchYelp(term, location, sortBy) {
-    this.setState({ buttonText: "Waiting..." })
+  const searchYelp = (term, location, sortBy) => {
+    setButtonText("Waiting...")
     Yelp.search(term ,location, sortBy).then(businesses => {
-      this.setState({ businesses: businesses, buttonText: "Let's go" })
+      setBusinesses(businesses);
+      setButtonText("Let's go")
     })
   };
 
-  render() {
-    return (
-      <div className="App">
-        <h1>ravenous</h1>
-        <SearchBar buttonState={this.state.buttonText} searchYelp={this.searchYelp} />
-        <BusinessList businesses={this.state.businesses} />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <h1>ravenous</h1>
+      <SearchBar buttonState={buttonText} searchYelp={searchYelp} />
+      <BusinessList businesses={businesses} />
+    </div>
+  );
 }
 
 export default App;
