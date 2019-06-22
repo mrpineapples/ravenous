@@ -11,7 +11,6 @@ const Yelp = {
     }).then(jsonResponse => {
       if (jsonResponse.businesses) {
         return jsonResponse.businesses.map(business => {
-          console.log(business);
           return {
             id: business.id,
             imageSrc: business.image_url,
@@ -27,7 +26,7 @@ const Yelp = {
           }
         });
       } else {
-        alert("Enter Business and Location");
+        alert("Please fill out both fields.");
         window.location.reload(); 
       }
     });
